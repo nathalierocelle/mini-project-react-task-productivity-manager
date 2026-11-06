@@ -87,8 +87,8 @@ Every query renders its UI from TanStack Query's `isPending` / `isError` / `data
 Requires Node.js 20.19+ (or 22.12+).
 
 ```bash
-git clone <your-repo-url>
-cd <your-repo>
+git clone https://github.com/nathalierocelle/mini-project-react-task-productivity-manager.git
+cd mini-project-react-task-productivity-manager
 npm install
 npm run dev
 ```
