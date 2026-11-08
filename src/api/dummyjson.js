@@ -8,6 +8,11 @@ class ApiError extends Error {
   }
 }
 
+// 4xx means the request itself is wrong (missing or invalid id), so retrying won't help.
+export function isClientError(error) {
+  return error?.status >= 400 && error?.status < 500
+}
+
 async function request(path) {
   const response = await fetch(`${BASE_URL}${path}`)
   const data = await response.json().catch(() => null)

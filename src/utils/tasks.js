@@ -44,3 +44,10 @@ export function getAssigneeOptions(tasks, userNames = {}) {
     .map((id) => ({ value: String(id), label: userNames[id] ?? `User #${id}` }))
     .sort((a, b) => a.label.localeCompare(b.label))
 }
+
+// Neighbours of a task in list order, plus its 1-based position (all undefined if not found).
+export function getAdjacentTasks(tasks, id) {
+  const index = tasks.findIndex((task) => task.id === id)
+  if (index === -1) return {}
+  return { previous: tasks[index - 1], next: tasks[index + 1], position: index + 1 }
+}

@@ -5,7 +5,7 @@ import AssigneeChip from './AssigneeChip'
 
 export default function TaskCard({ task, showAssignee, assigneeName, onToggleDone }) {
   return (
-    <article className="flex h-full gap-3 rounded-xl border border-slate-800 bg-slate-900 p-4 shadow-sm transition hover:border-pink-500/60">
+    <article className="flex h-full min-h-28 gap-3 rounded-xl border border-slate-800 bg-slate-900 p-4 shadow-sm transition hover:border-pink-500/60">
       <DoneCheckbox
         checked={task.completed}
         label={`Mark task ${task.id} as ${task.completed ? 'not done' : 'done'}`}
@@ -14,7 +14,8 @@ export default function TaskCard({ task, showAssignee, assigneeName, onToggleDon
       <div className="flex min-w-0 flex-1 flex-col justify-between gap-3">
         <Link
           to={`/tasks/${task.id}`}
-          className={`text-sm leading-relaxed wrap-break-word hover:text-pink-300 ${
+          title={task.todo}
+          className={`line-clamp-2 text-sm leading-relaxed wrap-break-word hover:text-pink-300 ${
             task.completed ? 'text-slate-500 line-through' : 'text-slate-200'
           }`}
         >

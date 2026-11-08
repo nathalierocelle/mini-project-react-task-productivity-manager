@@ -1,7 +1,8 @@
 import { Link } from 'react-router'
+import { isClientError } from '../api/dummyjson'
 
 export default function ErrorState({ error, onRetry }) {
-  const isNotFound = error?.status === 404
+  const isNotFound = isClientError(error)
 
   return (
     <div role="alert" className="rounded-xl border border-red-500/30 bg-red-500/10 p-6 text-center">

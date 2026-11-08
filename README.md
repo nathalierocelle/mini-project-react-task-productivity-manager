@@ -10,7 +10,7 @@ TaskFlow is a responsive task and productivity manager that pulls todo data from
 | --- | --- | --- |
 | `/` | Dashboard | Task totals, completed vs. pending counts, overall progress bar, and the next pending tasks |
 | `/tasks` | Tasks | Every task with its assignee, a filter bar (search, All / Pending / Completed, user dropdown), a "Showing X of Y" count, tick-to-complete checkboxes and pagination |
-| `/tasks/:id` | Task detail (**dynamic**) | Reads `id` with `useParams`, fetches that task, and shows its status, assignee, a **Mark as done** button and previous/next navigation |
+| `/tasks/:id` | Task detail (**dynamic**) | Reads `id` with `useParams`, fetches that task, and shows its status badge, assignee, role, position, a **Mark as done / Mark as pending** button and previous/next links with the neighbouring task titles |
 | `/users` | Users | Everyone who has tasks, sorted by workload, with name search and pagination |
 | `/users/:id` | User (**dynamic**) | The assignee's profile, completion rate, and every task assigned to them |
 | `*` | Not found | A friendly 404 page for unknown URLs |
@@ -21,7 +21,7 @@ TaskFlow is a responsive task and productivity manager that pulls todo data from
 
 | Endpoint | Used by |
 | --- | --- |
-| `GET /todos?limit=0` | Dashboard, Tasks |
+| `GET /todos?limit=0` | Dashboard, Tasks, Users (task counts), Task detail (position and previous/next titles) |
 | `GET /todos/:id` | Task detail |
 | `GET /users?limit=0` | Users page, assignee names on task cards and the user filter |
 | `GET /users/:id` | Task detail (assignee), User page |
@@ -42,7 +42,7 @@ All server data is fetched and cached by TanStack Query through custom hooks in 
 
 - The Dashboard, Tasks and Users pages share the `['todos']` key, so tasks are fetched once and reused from the cache (the Users page derives each person's task count from it).
 - Ids in query keys are normalised with `String()`, because route params are strings while API ids are numbers.
-- `staleTime` is 60 seconds. Failed requests retry once, except 404s, which are never retried.
+- `staleTime` is 60 seconds. Failed requests retry once, except 4xx responses (e.g. 404 for a missing id, 400 for an invalid one like `/users/abc`), which are never retried and show a "Not found" card.
 
 ### State ownership (`useState`)
 
@@ -62,7 +62,7 @@ Every query renders its UI from TanStack Query's `isPending` / `isError` / `data
 | --- | --- |
 | **Loading** | Load any page (in DevTools → Network, set throttling to *Slow 4G* to see it clearly). Shows a spinner with skeleton cards. |
 | **Error** | Visit [`/tasks/99999`](http://localhost:5173/tasks/99999), where the API returns a 404 and the "Not found" error card appears. Alternatively, set DevTools → Network to *Offline* and reload any page to get the error card with a **Try again** button (which calls `refetch`). |
-| **Empty** | On `/tasks`, search for `zzzz`. A "No tasks found" card appears with a **Clear filters** action (on `/users`, the same search gives "No users found"). |
+| **Empty** | On `/tasks`, search for `zzzz`. A "No tasks match your filters" card appears with a **Clear filters** action (on `/users`, the same search gives "No users found"). |
 
 ## Screenshots
 

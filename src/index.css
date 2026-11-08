@@ -3,3 +3,12 @@
 :root {
   color-scheme: dark;
 }
+
+@layer base {
+  /* Consistent keyboard focus ring for every interactive element. Utilities (e.g. inputs'
+     focus:ring) still override this because they sit in a later layer. */
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-pink-400);
+    outline-offset: 2px;
+  }
+}

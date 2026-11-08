@@ -50,7 +50,9 @@ export default function UsersPage() {
     .sort((a, b) => taskCounts[b.id] - taskCounts[a.id])
   const visibleUsers = filterUsers(usersWithTasks, search)
   const totalPages = Math.max(1, Math.ceil(visibleUsers.length / PAGE_SIZE))
-  const pageUsers = visibleUsers.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
+  // Clamp in case ticking/filtering shrinks the list below the current page.
+  const currentPage = Math.min(page, totalPages)
+  const pageUsers = visibleUsers.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE)
 
   return (
     <>
@@ -75,7 +77,7 @@ export default function UsersPage() {
       ) : (
         <>
           <UserList users={pageUsers} taskCounts={taskCounts} />
-          <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
+          <Pagination page={currentPage} totalPages={totalPages} onPageChange={setPage} />
         </>
       )}
     </>

@@ -1,11 +1,13 @@
-export default function StatusBadge({ completed }) {
-  return completed ? (
-    <span className="inline-flex shrink-0 items-center rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-medium text-emerald-400 ring-1 ring-emerald-500/30">
-      Completed
-    </span>
-  ) : (
-    <span className="inline-flex shrink-0 items-center rounded-full bg-amber-500/10 px-2.5 py-0.5 text-xs font-medium text-amber-400 ring-1 ring-amber-500/30">
-      Pending
+export default function StatusBadge({ completed, doneLabel = 'Completed' }) {
+  return (
+    <span
+      className={`inline-flex shrink-0 items-center rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 transition-colors duration-200 ${
+        completed
+          ? 'bg-emerald-500/10 text-emerald-400 ring-emerald-500/30'
+          : 'bg-amber-500/10 text-amber-400 ring-amber-500/30'
+      }`}
+    >
+      {completed ? doneLabel : 'Pending'}
     </span>
   )
 }
