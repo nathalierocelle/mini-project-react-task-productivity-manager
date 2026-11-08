@@ -158,3 +158,5 @@ React, React Router, TanStack Query, Tailwind CSS, Vite.
 
 ## Deployed App
 Link of the deployed app: https://mini-project-react-taskflow.vercel.app/
+
+![Deployed app demo](docs/screenshots/deployed_app_demo.gif)
