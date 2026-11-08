@@ -66,21 +66,57 @@ Every query renders its UI from TanStack Query's `isPending` / `isError` / `data
 
 ## Screenshots
 
-| Dashboard (`/`) | Tasks (`/tasks`) |
-| --- | --- |
-| ![Dashboard](docs/screenshots/dashboard.png) | ![Tasks list](docs/screenshots/tasks.png) |
+### Routes
 
-| Task detail (`/tasks/:id`) | Users (`/users`) |
-| --- | --- |
-| ![Task detail](docs/screenshots/task-detail.png) | ![Users list](docs/screenshots/users.png) |
+| Dashboard (`/`) | 
+| --- |
+| ![Dashboard](docs/screenshots/dashboard.png) | 
 
-| User (`/users/:id`) | |
-| --- | --- |
-| ![User page](docs/screenshots/user.png) | |
+| Tasks (`/tasks`) |
+| --- | 
+| ![Tasks list](docs/screenshots/tasks.png) | 
 
-| Mobile view | Error / empty states |
+| Users (`/users`) | 
+| --- | 
+| ![Users list](docs/screenshots/users.png) | 
+
+### Dynamic Routes
+
+| Task details (`/tasks/:id`) |
+| --- |
+| ![Task detail sample 1](docs/screenshots/task_detail.png) |
+| ![Task detail sample 2](docs/screenshots/task_detail_2.png) |
+
+| User details (`/users/:id`) |
+| --- |
+| ![User detail sample 1](docs/screenshots/user_detail.png) |
+| ![User detail sample 2](docs/screenshots/user_detail_2.png) |
+
+### Error / Empty State
+
+| Page not found | User not found | Task not found |
+| --- | --- | --- |
+| ![Page not found](docs/screenshots/page_not_found.png) | ![User not found](docs/screenshots/user_not_found.png) | ![Task not found](docs/screenshots/task_not_found.png) |
+
+### Mobile view
+
+#### Routes
+
+| Dashboard (`/`) | Tasks (`/tasks`) | Users (`/users`) |
+| --- | --- | --- |
+| ![Mobile dashboard](docs/screenshots/mobile_dashboard.png) | ![Mobile tasks list](docs/screenshots/mobile_task.png) | ![Mobile users list](docs/screenshots/mobile_user.png) |
+
+#### Dynamic Routes
+
+| Task detail (`/tasks/:id`) | User detail (`/users/:id`) |
 | --- | --- |
-| ![Mobile](docs/screenshots/mobile.png) | ![Empty state](docs/screenshots/empty-state.png) |
+| ![Mobile task detail](docs/screenshots/mobile_task_sample.png) | ![Mobile user detail](docs/screenshots/mobile_user_sample.png) |
+
+#### Error / Empty State
+
+| Page not found | User not found | Task not found |
+| --- | --- | --- |
+| ![Mobile page not found](docs/screenshots/mobile_page_not_found.png) | ![Mobile user not found](docs/screenshots/mobile_user_not_found.png) | ![Mobile task not found](docs/screenshots/mobile_task_not_found.png) |
 
 ## Setup
 
@@ -121,4 +157,4 @@ src/
 React, React Router, TanStack Query, Tailwind CSS, Vite.
 
 ## Deployed App
-
+Link of the deployed app: https://mini-project-react-taskflow.vercel.app/
