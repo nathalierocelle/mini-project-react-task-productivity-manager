@@ -39,7 +39,7 @@ export default function TaskDetails({ task, position, total }) {
         <Assignee userId={task.userId} user={user} isPending={isPending} isError={isError} />
       </DetailField>
       <DetailField label="Role">
-        <span className="truncate">{isError ? '—' : role}</span>
+        <span className="truncate">{role}</span>
       </DetailField>
       <DetailField label="Position">{position && total ? `${position} of ${total}` : '—'}</DetailField>
     </dl>

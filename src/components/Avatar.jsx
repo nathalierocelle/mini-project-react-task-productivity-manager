@@ -10,15 +10,16 @@ function getInitials(name) {
 }
 
 // Circular avatar that falls back to the person's initials if the image is missing or fails.
-// Give it `key={src}` so the fallback resets when the image changes.
-export default function Avatar({ src, name, className = 'size-8' }) {
+// `className` sets size, initials text size and any ring. Give it `key={src}` so the
+// fallback resets when the image changes.
+export default function Avatar({ src, name, className = 'size-8 text-xs' }) {
   const [failed, setFailed] = useState(false)
 
   if (!src || failed) {
     return (
       <span
         aria-hidden="true"
-        className={`grid shrink-0 place-items-center rounded-full bg-pink-500/15 text-xs font-semibold text-pink-300 ring-1 ring-pink-500/30 ${className}`}
+        className={`grid shrink-0 place-items-center rounded-full bg-pink-500/15 font-semibold text-pink-300 ${className}`}
       >
         {getInitials(name)}
       </span>
